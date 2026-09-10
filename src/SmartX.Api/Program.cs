@@ -1,5 +1,6 @@
 using System.Reflection;
 using SmartX.Shared.Contracts;
+using SmartX.Shared.Demo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,5 +39,15 @@ app.MapGet("/api/gateway/info", (IWebHostEnvironment env) =>
         ServerTimeUtc: DateTimeOffset.UtcNow,
         Message: "Gateway API online. Client <-> API <-> Shared round trip OK."));
 });
+
+// --- Phase 3: live proof of the four assessed C# features --------------------
+// Runs the real SmartX.Shared types (generics / operator overloading / advanced
+// arrays / recursion) and returns what each produced.
+app.MapGet("/api/demo/oop", () => Results.Ok(SharedFeatureDemo.Run()));
+
+// Also write the same report to the console on start-up.
+var demo = SharedFeatureDemo.Run();
+app.Logger.LogInformation("Shared feature demo:\n  Generics: {Generics}\n  Operators: {Operators}\n  Arrays: {Arrays}\n  Recursion: {Recursion}",
+    demo.Generics, demo.OperatorOverloading, demo.AdvancedArrays, demo.Recursion);
 
 app.Run();
