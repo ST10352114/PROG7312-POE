@@ -1,0 +1,16 @@
+# Normalise line endings: check out with the platform's native EOL,
+# store LF in the repo. Keeps diffs clean across Windows/macOS/Linux.
+* text=auto
+
+*.cs      text diff=csharp
+*.razor   text
+*.csproj  text
+*.sln     text eol=crlf
+*.json    text
+*.md      text
+*.css     text
+*.html    text
+
+*.png     binary
+*.jpg     binary
+*.ico     binary

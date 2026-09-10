@@ -1,0 +1,32 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.DotSettings.user
+
+# Blazor WASM publish artifacts
+publish/
+dist/
+
+# Runtime data written by the API (uploaded config files / photos / logs).
+# Ignore the folder's contents but keep the folder itself in the repo.
+src/SmartX.Api/data/*
+!src/SmartX.Api/data/.gitkeep
+
+# Local env / secrets
+*.env
+appsettings.*.Local.json
+
+# OS
+.DS_Store
+Thumbs.db
