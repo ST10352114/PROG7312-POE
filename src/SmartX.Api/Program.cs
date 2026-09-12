@@ -1,8 +1,11 @@
 using System.Reflection;
+using SmartX.Api.Sensors;
 using SmartX.Shared.Contracts;
 using SmartX.Shared.Demo;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<SensorRepository>();
 
 // CORS: the Blazor WASM client is served from a different origin (port) during
 // development, so the browser needs the API to explicitly allow that origin.
@@ -42,6 +45,9 @@ app.MapGet("/api/gateway/info", (IWebHostEnvironment env) =>
 // Runs the real SmartX.Shared types (generics / operator overloading / advanced
 // arrays / recursion) and returns what each produced.
 app.MapGet("/api/demo/oop", () => Results.Ok(SharedFeatureDemo.Run()));
+
+// --- Phase 4: sensor registration, telemetry submission, listing, profile upload ---
+app.MapSensorEndpoints();
 
 // Also write the same report to the console on start-up.
 var demo = SharedFeatureDemo.Run();

@@ -30,3 +30,6 @@ appsettings.*.Local.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Local assistant notes (never committed)
+CLAUDE.md
