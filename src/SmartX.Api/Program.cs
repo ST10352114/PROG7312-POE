@@ -25,9 +25,7 @@ var app = builder.Build();
 
 app.UseCors(ClientCorsPolicy);
 
-// --- Phase 1: Hello World round trip ------------------------------------------
-// The client calls this endpoint on startup and renders the result, which
-// confirms the three projects are wired together correctly.
+
 app.MapGet("/api/gateway/info", (IWebHostEnvironment env) =>
 {
     var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "1.0.0";
